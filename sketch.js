@@ -1,4 +1,5 @@
 
+
 const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
@@ -14,6 +15,10 @@ function preload(){
 }
 
 function setup() {
+	//estilizando os corpos aqui 
+	fill("brown"); 
+	rectMode(CENTER); 
+	ellipseMode(RADIUS);
 	createCanvas(500, 500);
 
 
@@ -25,92 +30,57 @@ function setup() {
 		isStatic:true
 	   }
 
-	var block1_options={
-		isStatic: true
-	}
-
-	var block2_options={
-		isStatic: true
-	}
-
-	var rotator1_options={
-		isStatic: true
-	}
-	var rotator2_options={
-		isStatic: true
-	}
-	var rotator3_options={
-		isStatic: true
-	}
-	var particle1_options={
-		restitution:0.4,
-		friction:0.02
-	}
-	var particle2_options={
-		restitution:0.4,
-		friction:0.02
-	}
-	var particle3_options={
-		restitution:0.4,
-		friction:0.02
-	}
-	var particle4_options={
-		restitution:0.4,
-		friction:0.02
-	}
-	var particle5_options={
-		restitution:0.4,
-		friction:0.02
-	}
-	var particle6_options={
-		restitution:0.4,
-		friction:0.02
-	}
-
 	plane = Bodies.rectangle(100,400,650,20,plane_options);
 	World.add(world,plane);
     
 
-    block1 = Bodies.rectangle(100,300,100,20,block1_options);
+    block1=Bodies.rectangle(100,400,150,20,plane_options);
 	World.add(world,block1);
 
-
-	block2 = Bodies.rectangle(50,300,100,20,block2_options);
+	block2=Bodies.rectangle(100,400,150,20,plane_options);
 	World.add(world,block2);
 
-	rotator1 = Bodies.rectangle(250,200,150,20,rotator1_options);
+	 //crie múltiplos de corpos de partículas var
+	particle_options = { 
+		restitution:0.4, friction:0.02
+	 }
+
+	  //crie todos os três corpos de rotadores
+	   var rotator_options={
+		 isStatic:true
+		 };
+
+	rotator1 = Bodies.rectangle(250,200,150,20,rotator_options);
 	World.add(world,rotator1);
 
-	rotator2 = Bodies.rectangle(250,200,150,20,rotator2_options);
+	rotator2 = Bodies.rectangle(250,200,150,20,rotator_options);
 	World.add(world,rotator2);
 
-	rotator3 = Bodies.rectangle(250,200,150,20,rotator3_options);
+	rotator3 = Bodies.rectangle(250,200,150,20,rotator_options);
 	World.add(world,rotator3);
 
-    particle1 = Bodies.circle(220,10,10,particle1_options);
+    particle1 = Bodies.circle(220,10,10,particle_options);
     World.add(world,particle1);
 
-	particle2 = Bodies.circle(220,10,10,particle2_options);
+	particle2 = Bodies.circle(220,10,10,particle_options);
     World.add(world,particle2);
 
-	particle3 = Bodies.circle(220,10,10,particle3_options);
+	particle3 = Bodies.circle(220,10,10,particle_options);
     World.add(world,particle3);
 
-	particle4 = Bodies.circle(220,10,10,particle4_options);
+	particle4 = Bodies.circle(220,10,10,particle_options);
     World.add(world,particle4);
 
-	particle5 = Bodies.circle(220,10,10,particle5_options);
+	particle5 = Bodies.circle(220,10,10,particle_options);
     World.add(world,particle5);
 
-	particle6 = Bodies.circle(220,10,10,particle6_options);
+	particle6 = Bodies.circle(220,10,10,particle_options);
     World.add(world,particle6);
 
-	Engine.run(engine);
   
 }
 
 function draw() {
-  rectMode(CENTER);
   background(200);
   Engine.update(engine);
  
@@ -142,7 +112,7 @@ function draw() {
  
 }
 
-function vForce(){
-	Matter.Body.applyForce(ball,{x:0,y:0},{x:0,y:-0.05});
-  }
+
+	
+
 
